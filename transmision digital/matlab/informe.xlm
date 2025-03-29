@@ -1,0 +1,20 @@
+from openpyxl import Workbook
+import math
+
+# Crear un nuevo libro de Excel
+wb = Workbook()
+ws = wb.active
+ws.title = "Funciones"
+
+# Agregar encabezados
+ws.append(["x", "sin(x)", "x^2"])
+
+# Rellenar datos
+for x in range(0, 361, 10):  # Valores de 0 a 360 grados con paso de 10
+    radianes = math.radians(x)
+    seno = math.sin(radianes)
+    cuadrado = x ** 2
+    ws.append([x, seno, cuadrado])
+
+# Guardar el archivo
+wb.save("funciones.xlsx")

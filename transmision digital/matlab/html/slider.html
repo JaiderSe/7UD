@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      -->
+<title>slider</title>
+<meta name="generator" content="MATLAB 24.2">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2025-03-29">
+<meta name="DC.source" content="slider.m">
+<style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style>
+</head>
+<body>
+<div class="content">
+<pre class="codeinput">
+<span class="comment">% C&oacute;digo para modelar una funci&oacute;n seno con sliders</span>
+
+<span class="comment">% Par&aacute;metros iniciales</span>
+amplitud = 1; <span class="comment">% Amplitud inicial</span>
+frecuencia = 1; <span class="comment">% Frecuencia inicial en Hz</span>
+fase = 0; <span class="comment">% Fase inicial en radianes</span>
+fs = 100; <span class="comment">% Frecuencia de muestreo en Hz</span>
+t = 0:1/fs:2; <span class="comment">% Vector de tiempo (2 segundos)</span>
+
+<span class="comment">% Crear la figura</span>
+figure(<span class="string">'Name'</span>, <span class="string">'Funci&oacute;n Seno con Sliders'</span>, <span class="string">'NumberTitle'</span>, <span class="string">'off'</span>);
+
+<span class="comment">% Crear el eje para la gr&aacute;fica</span>
+ax = axes(<span class="string">'Position'</span>, [0.1, 0.4, 0.8, 0.5]);
+grid <span class="string">on</span>;
+xlabel(<span class="string">'Tiempo (s)'</span>);
+ylabel(<span class="string">'Amplitud'</span>);
+title(<span class="string">'Funci&oacute;n Seno'</span>);
+
+<span class="comment">% Funci&oacute;n seno inicial</span>
+y = amplitud * sin(2 * pi * frecuencia * t + fase);
+plotHandle = plot(t, y);
+
+<span class="comment">% Crear sliders</span>
+uicontrol(<span class="string">'Style'</span>, <span class="string">'text'</span>, <span class="string">'Position'</span>, [50, 80, 100, 20], <span class="string">'String'</span>, <span class="string">'Amplitud'</span>);
+sliderAmplitud = uicontrol(<span class="string">'Style'</span>, <span class="string">'slider'</span>, <span class="string">'Min'</span>, 0.1, <span class="string">'Max'</span>, 5, <span class="string">'Value'</span>, amplitud, <span class="keyword">...</span>
+    <span class="string">'Position'</span>, [150, 80, 300, 20], <span class="string">'Callback'</span>, @actualizarGrafica);
+
+uicontrol(<span class="string">'Style'</span>, <span class="string">'text'</span>, <span class="string">'Position'</span>, [50, 50, 100, 20], <span class="string">'String'</span>, <span class="string">'Frecuencia'</span>);
+sliderFrecuencia = uicontrol(<span class="string">'Style'</span>, <span class="string">'slider'</span>, <span class="string">'Min'</span>, 0.1, <span class="string">'Max'</span>, 10, <span class="string">'Value'</span>, frecuencia, <span class="keyword">...</span>
+    <span class="string">'Position'</span>, [150, 50, 300, 20], <span class="string">'Callback'</span>, @actualizarGrafica);
+
+uicontrol(<span class="string">'Style'</span>, <span class="string">'text'</span>, <span class="string">'Position'</span>, [50, 20, 100, 20], <span class="string">'String'</span>, <span class="string">'Fase'</span>);
+sliderFase = uicontrol(<span class="string">'Style'</span>, <span class="string">'slider'</span>, <span class="string">'Min'</span>, 0, <span class="string">'Max'</span>, 2*pi, <span class="string">'Value'</span>, fase, <span class="keyword">...</span>
+     <span class="string">'Position'</span>, [150, 20, 300, 20], <span class="string">'Callback'</span>, @actualizarGrafica);
+
+<span class="comment">% Funci&oacute;n para actualizar la gr&aacute;fica</span>
+<span class="keyword">function</span> actualizarGrafica(~, ~, sliders, plotHandle, t)
+    amplitud = get(sliders.sliderAmplitud, <span class="string">'Value'</span>);
+    frecuencia = get(sliders.sliderFrecuencia, <span class="string">'Value'</span>);
+    fase = get(sliders.sliderFase, <span class="string">'Value'</span>);
+    y = amplitud * sin(2 * pi * frecuencia * t + fase);
+    set(plotHandle, <span class="string">'YData'</span>, y);
+<span class="keyword">end</span>
+
+<span class="comment">% Pasar sliders y plotHandle a la funci&oacute;n</span>
+sliders.sliderAmplitud = sliderAmplitud;
+sliders.sliderFrecuencia = sliderFrecuencia;
+sliders.sliderFase = sliderFase;
+
+set(sliderAmplitud, <span class="string">'Callback'</span>, @(src, event) actualizarGrafica(src, event, sliders, plotHandle, t));
+set(sliderFrecuencia, <span class="string">'Callback'</span>, @(src, event) actualizarGrafica(src, event, sliders, plotHandle, t));
+set(sliderFase, <span class="string">'Callback'</span>, @(src, event) actualizarGrafica(src, event, sliders, plotHandle, t));
+</pre>
+<img vspace="5" hspace="5" src="slider_01.png" alt=""> <p class="footer">
+<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2024b</a>
+<br>
+</p>
+</div>
+<!--
+##### SOURCE BEGIN #####
+% Código para modelar una función seno con sliders
+
+% Parámetros iniciales
+amplitud = 1; % Amplitud inicial
+frecuencia = 1; % Frecuencia inicial en Hz
+fase = 0; % Fase inicial en radianes
+fs = 100; % Frecuencia de muestreo en Hz
+t = 0:1/fs:2; % Vector de tiempo (2 segundos)
+
+% Crear la figura
+figure('Name', 'Función Seno con Sliders', 'NumberTitle', 'off');
+
+% Crear el eje para la gráfica
+ax = axes('Position', [0.1, 0.4, 0.8, 0.5]);
+grid on;
+xlabel('Tiempo (s)');
+ylabel('Amplitud');
+title('Función Seno');
+
+% Función seno inicial
+y = amplitud * sin(2 * pi * frecuencia * t + fase);
+plotHandle = plot(t, y);
+
+% Crear sliders
+uicontrol('Style', 'text', 'Position', [50, 80, 100, 20], 'String', 'Amplitud');
+sliderAmplitud = uicontrol('Style', 'slider', 'Min', 0.1, 'Max', 5, 'Value', amplitud, ...
+    'Position', [150, 80, 300, 20], 'Callback', @actualizarGrafica);
+
+uicontrol('Style', 'text', 'Position', [50, 50, 100, 20], 'String', 'Frecuencia');
+sliderFrecuencia = uicontrol('Style', 'slider', 'Min', 0.1, 'Max', 10, 'Value', frecuencia, ...
+    'Position', [150, 50, 300, 20], 'Callback', @actualizarGrafica);
+
+uicontrol('Style', 'text', 'Position', [50, 20, 100, 20], 'String', 'Fase');
+sliderFase = uicontrol('Style', 'slider', 'Min', 0, 'Max', 2*pi, 'Value', fase, ...
+     'Position', [150, 20, 300, 20], 'Callback', @actualizarGrafica);
+
+% Función para actualizar la gráfica
+function actualizarGrafica(~, ~, sliders, plotHandle, t)
+    amplitud = get(sliders.sliderAmplitud, 'Value');
+    frecuencia = get(sliders.sliderFrecuencia, 'Value');
+    fase = get(sliders.sliderFase, 'Value');
+    y = amplitud * sin(2 * pi * frecuencia * t + fase);
+    set(plotHandle, 'YData', y);
+end
+
+% Pasar sliders y plotHandle a la función
+sliders.sliderAmplitud = sliderAmplitud;
+sliders.sliderFrecuencia = sliderFrecuencia;
+sliders.sliderFase = sliderFase;
+
+set(sliderAmplitud, 'Callback', @(src, event) actualizarGrafica(src, event, sliders, plotHandle, t));
+set(sliderFrecuencia, 'Callback', @(src, event) actualizarGrafica(src, event, sliders, plotHandle, t));
+set(sliderFase, 'Callback', @(src, event) actualizarGrafica(src, event, sliders, plotHandle, t));
+##### SOURCE END #####
+-->
+</body>
+</html>
