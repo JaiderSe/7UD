@@ -1,5 +1,5 @@
 % Leer el archivo CSV
-file_path = './csv/ejercicio3.csv';
+file_path = '../excel/NewFile1.csv';
 
 % Saltar las primeras filas innecesarias y cargar los datos correctamente
 data = readtable(file_path, 'HeaderLines', 1, 'Delimiter', ',', 'ReadVariableNames', true, 'VariableNamingRule', 'preserve');

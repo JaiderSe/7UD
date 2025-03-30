@@ -14,7 +14,7 @@ header = {'X', 'CH1', 'Start', 'Increment,'};
 metadata = {'Sequence', 'Volt', -2.950000e-03, 5.000000e-06};
 
 % Crear el archivo CSV
-fileID = fopen('./csv/ejercicio1.csv', 'w');
+fileID = fopen('../csv/ejercicio1.csv', 'w');
 fprintf(fileID, '%s,%s,%s,%s\n', header{:}); % Escribir encabezado
 fprintf(fileID, '%s,%s,%.6e,%.6e\n', metadata{:}); % Escribir metadatos
 

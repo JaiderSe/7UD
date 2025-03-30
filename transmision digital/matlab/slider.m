@@ -51,3 +51,4 @@ sliders.sliderFase = sliderFase;
 set(sliderAmplitud, 'Callback', @(src, event) actualizarGrafica(src, event, sliders, plotHandle, t));
 set(sliderFrecuencia, 'Callback', @(src, event) actualizarGrafica(src, event, sliders, plotHandle, t));
 set(sliderFase, 'Callback', @(src, event) actualizarGrafica(src, event, sliders, plotHandle, t));
+
