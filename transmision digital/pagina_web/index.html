@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Página web</title>
+</head>
+<body>
+    <script src="./javascript/animacion.js"></script>
+    <div>
+        <h1>Gráfica de la función seno</h1>
+        <label for="amplitude">Amplitud:</label>
+        <input type="range" id="amplitude" min="1" max="5" step="0.1" value="1">
+        <span id="amplitudeValue">1</span>
+        <br>
+        <label for="frequency">Frecuencia:</label>
+        <input type="range" id="frequency" min="1" max="10" step="0.1" value="1">
+        <span id="frequencyValue">1</span>
+        <br>
+        <canvas id="sineCanvas" width="800" height="400" style="border:1px solid #000;"></canvas>
+    </div>
+
+    <script>
+        const amplitudeSlider = document.getElementById('amplitude');
+        const frequencySlider = document.getElementById('frequency');
+        const amplitudeValue = document.getElementById('amplitudeValue');
+        const frequencyValue = document.getElementById('frequencyValue');
+        const canvas = document.getElementById('sineCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function drawSine(amplitude, frequency) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.beginPath();
+            for (let x = 0; x < canvas.width; x++) {
+                const y = canvas.height / 2 + amplitude * Math.sin((x / canvas.width) * 2 * Math.PI * frequency) * 100;
+                if (x === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            }
+            ctx.stroke();
+        }
+
+        function updateGraph() {
+            const amplitude = parseFloat(amplitudeSlider.value);
+            const frequency = parseFloat(frequencySlider.value);
+            amplitudeValue.textContent = amplitude;
+            frequencyValue.textContent = frequency;
+            drawSine(amplitude, frequency);
+        }
+
+        amplitudeSlider.addEventListener('input', updateGraph);
+        frequencySlider.addEventListener('input', updateGraph);
+
+        updateGraph();
+    </script>
+
+</body>
+</html>

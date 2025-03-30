@@ -27,13 +27,23 @@ fun main (){
     print(string+doble+"\n")
     print(string2+int16+character+int32+int64)
 
-    print("\n la suma de los enteros de 8 y 16 es: "+int8+int16)
-    print("\n la suma de los enteros de 32 y 64 es: "+int32+int64)
+    print("\n la suma de los enteros de 8 y 16 es: "+(int8+int16).toString())
+    print("\n la suma de los enteros de 32 y 64 es: "+(int32+int64).toString())
     print("\n la suma de los string y caracter es: "+string+character)
-    print("\n la suma de los flotantes y double es: "+flotante+doble)
-    print("\n la suma de los hexadecimales es: "+hexFormat+ string+string2)
+    print("\n la suma de los flotantes y double es: "+flotante.toString()+doble)
+    print("\n la suma de los hexadecimales es: "+(hexFormat+0x2f).toInt())
 
 
 
 }
+
+// video:
+/**
+ * video:
+ *
+ * https://udistritaleduco-my.sharepoint.com/:v:/g/personal/jsmorenoq_udistrital_edu_co/ETpPZUU5ht1AgtHioflXa7UBUoEbe3jcEHSFx7Wss5nRkw?e=jMfF1r&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D
+ *
+ * */
+
+
 
