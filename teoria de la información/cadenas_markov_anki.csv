@@ -1,0 +1,11 @@
+Pregunta,Respuesta
+¿Qué es una cadena de Markov?,Es un proceso estocástico donde el estado futuro depende solo del estado actual y no del pasado.
+¿Qué representa la matriz de transición en una cadena de Markov?,Es una matriz que indica las probabilidades de transición entre estados.
+¿Qué es un estado estacionario en una cadena de Markov?,Es un vector de probabilidades que permanece constante después de muchas transiciones.
+¿Cómo se encuentra el estado estacionario?,Resolviendo el sistema πP = π con la condición de que la suma de las probabilidades sea 1.
+¿Qué significa que una cadena de Markov es ergódica?,"Significa que es irreducible y aperiódica, lo que garantiza la convergencia a un estado estacionario único."
+¿Cuál es la propiedad de 'memoria corta' en una cadena de Markov?,"El estado futuro solo depende del estado actual, no de los estados anteriores."
+¿Cómo se puede estimar la distribución estacionaria de manera iterativa?,Elevando la matriz de transición a una gran potencia y observando la convergencia de sus filas.
+¿Qué es una cadena de Markov de tiempo continuo?,Es una cadena de Markov donde las transiciones ocurren en tiempos continuos en lugar de discretos.
+¿Qué es una cadena de Markov absorbente?,"Es una cadena con al menos un estado absorbente, que una vez alcanzado no se puede abandonar."
+¿Cómo se representa gráficamente una cadena de Markov?,Mediante un diagrama de estados con flechas que indican las probabilidades de transición.
