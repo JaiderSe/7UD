@@ -40,12 +40,6 @@ fun main (){
 }
 
 // video:
-/**
- * video:
- *
- * https://udistritaleduco-my.sharepoint.com/:v:/g/personal/jsmorenoq_udistrital_edu_co/ETpPZUU5ht1AgtHioflXa7UBUoEbe3jcEHSFx7Wss5nRkw?e=jMfF1r&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D
- *
- * */
 
 
 
