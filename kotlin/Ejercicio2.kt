@@ -31,7 +31,7 @@ fun main (){
     print(plan_celular)
 
 
-
+// link video explicativo:https://udistritaleduco-my.sharepoint.com/:v:/g/personal/jsmorenoq_udistrital_edu_co/EZr1b8sGc_pDtfLhbbpVQdgBFWghR2ivnn0YAhsK2depHg?e=8Oqr32&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D
 
 
 
