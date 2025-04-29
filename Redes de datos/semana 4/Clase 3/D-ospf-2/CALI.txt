@@ -1,0 +1,27 @@
+enable
+configure terminal
+hostname CALI
+
+! Enlace a BOGOTA - Subred 192.168.7.8/30
+interface FastEthernet0/0
+description Enlace a BOGOTA
+ip address 192.168.7.9 255.255.255.252
+no shutdown
+exit
+
+! Enlace a GUAJIRA
+interface FastEthernet1/0
+description Enlace a GUAJIRA
+ip address 192.168.7.13 255.255.255.252
+no shutdown
+exit
+
+! Configurar OSPF
+router ospf 1
+router-id 3.3.3.3
+! Enlace a BOGOTA
+network 192.168.7.8 0.0.0.3 area 0 
+! Enlacea GUAJIRA      
+network 192.168.7.12 0.0.0.3 area 0      
+end
+write memory

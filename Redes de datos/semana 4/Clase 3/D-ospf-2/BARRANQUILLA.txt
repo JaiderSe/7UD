@@ -1,0 +1,26 @@
+enable
+configure terminal
+hostname BARRANQUILLA
+
+! Enlace a BOGOTA
+interface FastEthernet0/0
+description Enlace a BOGOTA
+ip address 192.168.7.2 255.255.255.252
+no shutdown
+exit
+
+! Enlace a GUAJIRA
+interface FastEthernet1/0
+description Enlace a GUAJIRA
+ip address 192.168.7.5 255.255.255.252
+no shutdown
+exit
+
+router ospf 1
+router-id 2.2.2.2
+! Enlace a BOGOTA
+network 192.168.7.0 0.0.0.3 area 0
+! Enlace a GUAJIRA
+network 192.168.7.4 0.0.0.3 area 0
+end
+write memory

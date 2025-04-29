@@ -1,0 +1,38 @@
+enable
+configure terminal
+
+! Cambiamos el nombre del router
+hostname R1
+
+! =====================================
+! INTERFACES CONECTADAS
+! =====================================
+interface fa0/0
+ip address 192.168.1.1 255.255.255.0
+no shutdown
+exit
+
+interface fa1/0
+ip address 10.0.0.1 255.255.255.0
+no shutdown
+exit
+
+! =====================================
+! CONFIGURACIÓN DE OSPF
+! =====================================
+! Se inicia el proceso OSPF número 1
+router ospf 1    
+! Se asigna un identificador único al router (opcional pero recomendable)           
+router-id 1.1.1.1           
+
+! Se indican las redes que se van a anunciar en OSPF
+! Máscara wildcard 0.0.0.255 segmento relevante
+! Interfaces a incluir 192.168.1.x
+! LAN PC0
+network 192.168.1.0 0.0.0.255 area 0
+! Enlace con R2     
+network 10.0.0.0 0.0.0.255 area 0        
+
+exit
+exit
+write memory

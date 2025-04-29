@@ -1,0 +1,18 @@
+enable
+configure terminal
+hostname R3
+
+interface fa0/0
+ip address 192.168.2.1 255.255.255.0
+no shutdown
+exit
+
+interface fa1/0
+ip address 10.0.0.6 255.255.255.252
+no shutdown
+exit
+
+router bgp 65002
+neighbor 10.0.0.5 remote-as 65000
+network 192.168.2.0 mask 255.255.255.0
+exit

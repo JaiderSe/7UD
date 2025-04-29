@@ -39,7 +39,5 @@ fun main (){
 
 }
 
-// video:
-
 
 

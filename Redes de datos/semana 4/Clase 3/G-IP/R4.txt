@@ -1,0 +1,27 @@
+enable
+configure terminal
+hostname R4
+
+! Enlace hacia R1 (Clase A)
+interface fa0/0
+ ip address 192.0.2.2 255.255.255.252
+ no shutdown
+exit
+
+! Enlace hacia R2 (Clase B)
+interface fa1/0
+ ip address 198.51.100.2 255.255.255.252
+ no shutdown
+exit
+
+! Enlace hacia R3 (Clase C)
+interface fa6/0
+ ip address 203.0.113.2 255.255.255.252
+ no shutdown
+exit
+
+! Rutas hacia cada LAN
+ip route 10.0.0.0 255.0.0.0 192.0.2.1
+ip route 172.16.0.0 255.255.0.0 198.51.100.1
+ip route 192.168.1.0 255.255.255.0 203.0.113.1
+exit

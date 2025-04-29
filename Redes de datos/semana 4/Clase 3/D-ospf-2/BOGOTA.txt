@@ -1,0 +1,58 @@
+enable
+configure terminal
+hostname BOGOTA
+
+! =============================================
+! Enlace a BARRANQUILLA - Subred 192.168.7.0/30
+! =============================================
+interface FastEthernet0/0
+description Enlace a BARRANQUILLA
+ip address 192.168.7.1 255.255.255.252
+no shutdown
+exit
+
+! =============================================
+! Enlace a CALI - Subred 192.168.7.8/30
+! =============================================
+interface FastEthernet1/0
+description Enlace a CALI
+ip address 192.168.7.9 255.255.255.252
+no shutdown
+exit
+
+! =============================================
+! Enlace a PASTO - Subred 192.168.7.16/30
+! =============================================
+interface FastEthernet2/0
+description Enlace a PASTO
+ip address 192.168.7.17 255.255.255.252
+no shutdown
+exit
+
+! =============================================
+! LAN BOGOTA - Subred 192.168.7.232/29
+! =============================================
+interface FastEthernet6/0
+description LAN BOGOTA
+ip address 192.168.7.233 255.255.255.240
+no shutdown
+exit
+
+! =============================================
+! Configuración de OSPF - Proceso 1
+! =============================================
+router ospf 1
+router-id 1.1.1.1
+
+! Interfaces WAN "área 0 es la interface"
+! Enlace a BARRANQUILLA
+network 192.168.7.0 0.0.0.3 area 0  
+! Enlace a CALI      
+network 192.168.7.8 0.0.0.3 area 0   
+! Enlace a PASTO     
+network 192.168.7.16 0.0.0.3 area 0      
+! LAN BOGOTA
+network 192.168.7.232 0.0.0.7 area 0
+
+end
+write memory

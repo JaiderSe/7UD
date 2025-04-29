@@ -1,0 +1,26 @@
+enable
+configure terminal
+hostname R2
+
+interface fa0/0
+ip address 10.0.0.2 255.255.255.0
+no shutdown
+exit
+
+interface fa1/0
+ip address 192.168.2.1 255.255.255.0
+no shutdown
+exit
+
+router ospf 1
+!El Router ID en OSPF debe tener el formato de una dirección IP
+!pero no tiene que ser una IP real configurada en una interfaz del router
+router-id 2.2.2.2
+! Enlace con R1
+network 10.0.0.0 0.0.0.255 area 0
+! LAN PC1       
+network 192.168.2.0 0.0.0.255 area 0    
+exit
+exit
+write memory
+

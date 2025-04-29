@@ -1,0 +1,48 @@
+enable
+configure terminal
+hostname R1
+
+! ==============================
+! Configuración de la interfaz hacia la LAN
+! ==============================
+interface fa0/0
+ description LAN hacia PC0
+ ip address 192.168.1.1 255.255.255.0
+ no shutdown
+exit
+
+! ==============================
+! Enlace WAN 1 hacia ISP
+! ==============================
+interface fa1/0
+ description Primer enlace WAN al ISP
+ ip address 10.0.1.1 255.255.255.252
+ no shutdown
+exit
+
+! ==============================
+! Enlace WAN 2 hacia ISP (redundante)
+! ==============================
+interface fa6/0
+ description Segundo enlace WAN al ISP
+ ip address 10.0.1.5 255.255.255.252
+ no shutdown
+exit
+
+! ==============================
+! Configuración de EIGRP
+! ==============================
+router eigrp 100
+! ID del sistema autónomo (igual que el ISP)
+! LAN
+ network 192.168.1.0      
+! Ambas subredes WAN   
+ network 10.0.1.0            
+ no auto-summary
+exit
+end
+write memory
+
+show ip eigrp neighbors
+show ip route eigrp
+ping 8.8.8.8

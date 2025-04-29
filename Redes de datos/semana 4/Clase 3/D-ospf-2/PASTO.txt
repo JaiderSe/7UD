@@ -1,0 +1,27 @@
+enable
+configure terminal
+hostname PASTO
+
+! Enlace a BOGOTA - Subred 192.168.7.16/30
+interface FastEthernet0/0
+description Enlace a BOGOTA
+ip address 192.168.7.17 255.255.255.252
+no shutdown
+exit
+
+! Enlace a GUAJIRA
+interface FastEthernet1/0
+description Enlace a GUAJIRA
+ip address 192.168.7.21 255.255.255.252
+no shutdown
+exit
+
+! Configurar OSPF
+router ospf 1
+router-id 4.4.4.4
+! Enlace a BOGOTA
+network 192.168.7.16 0.0.0.3 area 0  
+! Enlace a GUAJIRA
+network 192.168.7.20 0.0.0.3 area 0      
+end
+write memory

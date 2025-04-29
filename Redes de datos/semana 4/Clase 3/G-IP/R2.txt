@@ -1,0 +1,20 @@
+enable
+configure terminal
+hostname R2
+
+! LAN Clase B
+interface fa0/0
+ ip address 172.16.0.1 255.255.0.0
+ no shutdown
+exit
+
+! Enlace WAN hacia R4
+interface fa1/0
+ ip address 198.51.100.1 255.255.255.252
+ no shutdown
+exit
+
+! Rutas estáticas hacia redes clase A y C
+ip route 10.0.0.0 255.0.0.0 198.51.100.2
+ip route 192.168.1.0 255.255.255.0 198.51.100.2
+exit

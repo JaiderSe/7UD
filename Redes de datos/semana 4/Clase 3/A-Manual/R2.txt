@@ -1,0 +1,16 @@
+enable
+configure terminal
+hostname R2
+
+interface Gig0/0
+ip address 10.0.0.2 255.255.255.0
+no shutdown
+exit
+
+interface Gig0/1
+ip address 192.168.2.1 255.255.255.0
+no shutdown
+exit
+
+! Ruta estática para llegar a la red 192.168.1.0/24 a través de R1
+ip route 192.168.1.0 255.255.255.0 10.0.0.1

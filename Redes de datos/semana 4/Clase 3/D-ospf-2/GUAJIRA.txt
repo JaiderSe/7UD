@@ -1,0 +1,40 @@
+enable
+configure terminal
+hostname GUAJIRA
+
+! Enlace a BARRANQUILLA
+interface FastEthernet0/0
+description Enlace a BARRANQUILLA
+ip address 192.168.7.6 255.255.255.252
+no shutdown
+exit
+
+! Enlace a CALI
+interface FastEthernet1/0
+description Enlace a CALI
+ip address 192.168.7.14 255.255.255.252
+no shutdown
+exit
+
+! Enlace a PASTO
+interface FastEthernet2/0
+description Enlace a PASTO
+ip address 192.168.7.22 255.255.255.252
+no shutdown
+exit
+
+! Enlace a LAN GUAJIRA
+interface FastEthernet6/0
+description LAN GUAJIRA
+ip address 192.168.7.241 255.255.255.240
+no shutdown
+exit
+
+router ospf 1
+router-id 5.5.5.5
+network 192.168.7.4 0.0.0.3 area 0
+network 192.168.7.12 0.0.0.3 area 0
+network 192.168.7.20 0.0.0.3 area 0
+network 192.168.7.240 0.0.0.15 area 0
+end
+write memory

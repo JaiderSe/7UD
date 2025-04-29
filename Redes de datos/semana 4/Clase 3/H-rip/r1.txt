@@ -1,0 +1,32 @@
+enable
+configure terminal
+hostname R1
+
+! =========================
+! Configurar la interfaz Fa0/0 (hacia PC0)
+! =========================
+interface fa0/0
+ip address 192.168.1.1 255.255.255.0
+no shutdown
+exit
+
+! =========================
+! Configurar la interfaz Fa0/1 (enlace a R2)
+! =========================
+interface fa0/1
+ip address 10.0.0.1 255.255.255.0
+no shutdown
+exit
+
+! =========================
+! Activar el protocolo RIP versión 2
+! =========================
+router rip
+! Usar la versión 2 de RIP (soporta VLSM y subnetting)
+version 2
+! Evitar la sumarización automática de redes claseful
+no auto-summary
+! Indicar las redes directamente conectadas a este router
+network 192.168.1.0
+network 10.0.0.0
+exit
