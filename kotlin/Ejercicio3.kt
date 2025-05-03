@@ -30,7 +30,7 @@ fun main() {
     // Imprimimos quién es mayor
     println(imprimirMayor(nombre1, edad1, nombre2, edad2))
 }
-
-
+// control/command + click
+// video: https://udistritaleduco-my.sharepoint.com/:v:/g/personal/jsmorenoq_udistrital_edu_co/Ef14FapIibdAvtfmCqWipQwBYfDsGf_3yWWUlenzb_lwjQ?e=B0Isdk&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D
 
 
