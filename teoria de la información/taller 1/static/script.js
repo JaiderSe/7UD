@@ -29,4 +29,14 @@ function encodeMessage() {
     });
 }
 
+function save_file() {
+    const output = document.getElementById('output').innerHTML;
+    const filename = 'huffman_results.html';
+    const blob = new Blob([output], { type: 'text/html' });
+    const link = document.createElement('a');
+    link.href = window.URL.createObjectURL(blob);
+    link.download = filename;
+    link.click();
+}
+
 // Function to encode the input text using Huffman coding

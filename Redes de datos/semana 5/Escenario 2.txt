@@ -1,0 +1,124 @@
+------------ switch 1 VALN 10 ----------
+ena 
+conf t 
+vlan 10
+name administración
+exit
+
+vlan 20
+name usuarios 
+exit
+
+interface fa0/24
+switchport mode trunk
+switchport trunk allowed vlan 10,20
+no shutdown 
+exit 
+
+interface range fa0/1-9
+switchport mode access
+switchport access vlan 10
+no shutdown 
+exit
+
+interface range fa0/10-18
+switchport mode access 
+switchport access vlan 20
+no shutdown
+exit 
+exit 
+
+
+--------R1---------
+ena 
+conf t
+hostname R1
+interface Gig0/0
+no shutdown
+exit
+
+interface Gig0/0.10
+encapsulation dot1q 10
+ip address 192.168.10.1 255.255.255.0
+exit
+
+interface Gig0/0.20
+encapsulation dot1q 20
+ip address 192.168.20.1 255.255.255.0
+exit 
+
+interface Gig0/1
+ip address 10.0.0.1 255.255.255.0
+no shutdown
+end
+exit
+
+enable
+configure terminal
+router bgp 65001
+neighbor 10.0.0.2 remote-as 65000
+network 192.168.20.0 mask 255.255.255.0
+network 192.168.10.0 mask 255.255.255.0
+exit
+
+
+
+--------R2---------
+enable
+configure terminal
+hostname R2
+
+interface Gig0/0
+ip address 10.0.0.2 255.255.255.0
+no shutdown
+exit
+
+interface Gig0/1
+ip address 10.0.1.2 255.255.255.0
+no shutdown
+exit
+
+
+router bgp 65000
+neighbor 10.0.0.1 remote-as 65001
+neighbor 10.0.1.1 remote-as 65002
+exit
+end
+
+------R3-------
+
+ena
+conf t
+hostname R3
+interface Gig0/1
+ip address 10.0.1.1 255.255.255.0
+no shutdown
+end
+exit
+
+enable
+configure terminal
+router bgp 65002
+neighbor 10.0.1.2 remote-as 65000
+end
+
+--------- SSH Router 3 --------
+
+ena
+conf t 
+hostname Admin
+ip domain-name udistrital.com
+crypto key generate rsa
+1024
+line vty 0 4
+transpoort input ssh
+login local 
+exit
+username Rubiano privilege 15 password 123456
+enable secret 123456
+service password-encryption
+do show ip ssh
+exit
+
+
+ssh -l Rubiano 192.168.4.2

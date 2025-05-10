@@ -3,7 +3,7 @@ const int pwmPin = 9; // Puedes usar cualquier pin PWM
 
 // Parámetros de la señal
 const int numPoints = 1000;   // Número de muestras
-const float t_max = 8;     // Tiempo máximo (3 segundos como en tu ecuación)
+const float t_max = 8;     // Tiempo máximo 3seg
 const float dt = t_max / numPoints; // Incremento de tiempo
 
 // Arreglo para guardar la señal
